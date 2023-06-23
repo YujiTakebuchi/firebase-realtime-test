@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-import { useState } from "react";
+import { getDatabase, ref, set, onValue } from "firebase/database";
+import { useEffect, useState } from "react";
 
 const env = process.env;
 
@@ -13,6 +13,7 @@ const database = getDatabase(app);
 export const ChatInputField = () => {
   const [nameStat, setNameStat] = useState("");
   const [messageStat, setMessageStat] = useState("");
+  const [receivedMessageList, setReceivedMessageList] = useState([]);
 
   const room = "chat_room";
   const handleSendButton = () => {
@@ -23,6 +24,15 @@ export const ChatInputField = () => {
     setNameStat("");
     setMessageStat("");
   };
+  const connectChatDb = () => {
+    onValue(ref(database, room), (data) => {
+      const v = data.val();
+      const k = data.key;
+      setReceivedMessageList([...receivedMessageList, v]);
+    });
+  };
+
+  useEffect(connectChatDb, []);
   return (
     <div>
       <div>
@@ -44,7 +54,16 @@ export const ChatInputField = () => {
           send
         </button>
       </div>
-      <div id="output"></div>
+      <div id="output">
+        {receivedMessageList.map((rm) => {
+          return (
+            <>
+              <div className="name">{`名前: ${rm.name}`}</div>
+              <div className="message">{`メッセージ: ${rm.message}`}</div>
+            </>
+          );
+        })}
+      </div>
     </div>
   );
 };
