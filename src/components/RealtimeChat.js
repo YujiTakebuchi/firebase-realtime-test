@@ -1,3 +1,6 @@
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+
 export const ChatInputField = () => {
   return (
     <div>
@@ -14,6 +17,21 @@ export const ChatInputField = () => {
 };
 
 const RealtimeChat = () => {
+  const env = process.env;
+
+  const connectRealtimeDatabase = () => {
+    console.log(process.env.REACT_APP_FIREBASE_DB_URL);
+    const firebaseConfig = {
+      databaseURL: env.REACT_APP_FIREBASE_DB_URL,
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    const database = getDatabase(app);
+    console.log(database);
+  };
+
+  connectRealtimeDatabase();
   return <ChatInputField />;
 };
 
