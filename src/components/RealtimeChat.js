@@ -82,13 +82,13 @@ export const ChatInputField = () => {
         </button>
       </div>
       <div id="output">
-        {receivedMessageList.map((rm) => {
+        {receivedMessageList.map((rm, idx) => {
           if (!rm) return;
           return (
-            <>
+            <div className={"output-chat"} key={idx}>
               <div className="name">{`名前: ${rm.name}`}</div>
               <div className="message">{`メッセージ: ${rm.message}`}</div>
-            </>
+            </div>
           );
         })}
       </div>
