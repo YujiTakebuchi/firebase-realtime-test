@@ -8,6 +8,7 @@ import {
   get,
 } from "firebase/database";
 import { useEffect, useRef, useState } from "react";
+import styles from "./RealtimeChat.module.scss";
 
 const env = process.env;
 
@@ -59,8 +60,8 @@ export const ChatInputField = () => {
 
   useEffect(connectChatDb, []);
   return (
-    <div>
-      <div>
+    <div className={`${styles["realtime-chat"]}`}>
+      <div className={`${styles["realtime-chat--form__name"]}`}>
         <input
           type="text"
           id="name"
@@ -68,7 +69,7 @@ export const ChatInputField = () => {
           onChange={(e) => setNameStat(e.currentTarget.value)}
         />
       </div>
-      <div>
+      <div className={`${styles["realtime-chat--form__message"]}`}>
         <textarea
           id="message"
           row="10"
@@ -79,13 +80,20 @@ export const ChatInputField = () => {
           send
         </button>
       </div>
-      <div id="output">
+      <div id="output" className={`${styles["realtime-chat--display"]}`}>
         {receivedMessageList.map((rm, idx) => {
           if (!rm) return;
           return (
-            <div className={"output-chat"} key={idx}>
-              <div className="name">{`名前: ${rm.name}`}</div>
-              <div className="message">{`メッセージ: ${rm.message}`}</div>
+            <div
+              className={`${styles["realtime-chat--display__chat"]} output-chat`}
+              key={idx}
+            >
+              <div
+                className={`${styles["realtime-chat--display__chat__name"]} name`}
+              >{`名前: ${rm.name}`}</div>
+              <div
+                className={`${styles["realtime-chat--display__chat__message"]} message`}
+              >{`メッセージ: ${rm.message}`}</div>
             </div>
           );
         })}

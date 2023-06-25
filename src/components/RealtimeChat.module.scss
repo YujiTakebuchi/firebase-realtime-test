@@ -1,0 +1,20 @@
+.realtime-chat {
+  &--form {
+    &__name {
+    }
+    &__message {
+    }
+  }
+  &--display {
+    &__chat {
+      display: flex;
+      column-gap: 15px;
+      &__name {
+        flex: 0 0 200px;
+      }
+      &__message {
+        flex: 1 1 auto;
+      }
+    }
+  }
+}
