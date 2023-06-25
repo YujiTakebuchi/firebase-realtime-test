@@ -61,6 +61,24 @@ export const ChatInputField = () => {
   useEffect(connectChatDb, []);
   return (
     <div className={`${styles["realtime-chat"]}`}>
+      <div id="output" className={`${styles["realtime-chat--display"]}`}>
+        {receivedMessageList.map((rm, idx) => {
+          if (!rm) return;
+          return (
+            <div
+              className={`${styles["realtime-chat--display__chat"]} output-chat`}
+              key={idx}
+            >
+              <div
+                className={`${styles["realtime-chat--display__chat__name"]} name`}
+              >{`名前: ${rm.name}`}</div>
+              <div
+                className={`${styles["realtime-chat--display__chat__message"]} message`}
+              >{`メッセージ: ${rm.message}`}</div>
+            </div>
+          );
+        })}
+      </div>
       <div className={`${styles["realtime-chat--form"]}`}>
         <div className={`${styles["realtime-chat--form__name"]}`}>
           <input
@@ -83,24 +101,6 @@ export const ChatInputField = () => {
             send
           </button>
         </div>
-      </div>
-      <div id="output" className={`${styles["realtime-chat--display"]}`}>
-        {receivedMessageList.map((rm, idx) => {
-          if (!rm) return;
-          return (
-            <div
-              className={`${styles["realtime-chat--display__chat"]} output-chat`}
-              key={idx}
-            >
-              <div
-                className={`${styles["realtime-chat--display__chat__name"]} name`}
-              >{`名前: ${rm.name}`}</div>
-              <div
-                className={`${styles["realtime-chat--display__chat__message"]} message`}
-              >{`メッセージ: ${rm.message}`}</div>
-            </div>
-          );
-        })}
       </div>
     </div>
   );

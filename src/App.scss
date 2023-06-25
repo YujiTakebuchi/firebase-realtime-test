@@ -1,5 +1,9 @@
 .App {
+  min-height: 100vh;
   text-align: left;
+  main {
+    height: 100%;
+  }
   input,
   textarea {
     display: block;
