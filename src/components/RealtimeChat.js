@@ -48,7 +48,7 @@ export const ChatInputField = () => {
     get(child(ref(database), `${room}`)).then((data) => {
       const v = data.val();
       const messageList = Object.keys(v).map((m) => v[m]);
-      setReceivedMessageList([...messageList, v]);
+      setReceivedMessageList(messageList);
       // setReceivedMessageList({ type: "push", messageList: messageList });
     });
 
