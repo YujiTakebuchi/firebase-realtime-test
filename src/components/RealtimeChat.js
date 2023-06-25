@@ -28,7 +28,7 @@ export const ChatInputField = () => {
   const [nameStat, setNameStat] = useState("");
   const [messageStat, setMessageStat] = useState("");
   const [receivedMessageList, setReceivedMessageList] = useState([]);
-  const refKeyRef = useRef(null);
+  const firebaseRefKeyRef = useRef(null);
 
   const room = "chat_room";
   const handleSendButton = () => {
@@ -36,7 +36,7 @@ export const ChatInputField = () => {
       name: nameStat,
       message: messageStat,
     });
-    refKeyRef.current = pushObj.key;
+    firebaseRefKeyRef.current = pushObj.key;
     setNameStat("");
     setMessageStat("");
   };
