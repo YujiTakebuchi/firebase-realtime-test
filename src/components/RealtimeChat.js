@@ -27,10 +27,7 @@ const reducerFunc = (msgList, action) => {
 export const ChatInputField = () => {
   const [nameStat, setNameStat] = useState("");
   const [messageStat, setMessageStat] = useState("");
-  const [receivedMessageList, setReceivedMessageList] = useReducer(
-    reducerFunc,
-    []
-  );
+  const [receivedMessageList, setReceivedMessageList] = useState([]);
   const refKeyRef = useRef(null);
 
   const room = "chat_room";
@@ -43,19 +40,25 @@ export const ChatInputField = () => {
     setNameStat("");
     setMessageStat("");
   };
+  const appendRecievedMessageList = (messageObj) => {
+    setReceivedMessageList([...receivedMessageList, messageObj]);
+  };
   const connectChatDb = () => {
     // 過去のメッセージ取得
     get(child(ref(database), `${room}`)).then((data) => {
       const v = data.val();
       const messageList = Object.keys(v).map((m) => v[m]);
-      setReceivedMessageList({ type: "push", messageList: messageList });
+      setReceivedMessageList([...messageList, v]);
+      // setReceivedMessageList({ type: "push", messageList: messageList });
     });
 
     // メッセージ送信時のリスナ登録
     onChildAdded(ref(database, room), (data) => {
       const v = data.val();
       const k = data.key;
-      setReceivedMessageList({ type: "push", messageList: [v] });
+      // setReceivedMessageList(receivedMessageList);
+      // setReceivedMessageList({ type: "push", messageList: [v] });
+      appendRecievedMessageList(v);
     });
   };
 
