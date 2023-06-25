@@ -7,7 +7,7 @@ import {
   child,
   get,
 } from "firebase/database";
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const env = process.env;
 
@@ -16,13 +16,6 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-
-const reducerFunc = (msgList, action) => {
-  switch (action.type) {
-    case "push":
-      return [...msgList].concat(action.messageList);
-  }
-};
 
 export const ChatInputField = () => {
   const [nameStat, setNameStat] = useState("");
