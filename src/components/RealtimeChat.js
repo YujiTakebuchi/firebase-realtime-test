@@ -29,6 +29,8 @@ export const ChatInputField = () => {
   const [messageStat, setMessageStat] = useState("");
   const [receivedMessageList, setReceivedMessageList] = useState([]);
   const firebaseRefKeyRef = useRef(null);
+  const receivedMessageListRef = useRef(null);
+  receivedMessageListRef.current = receivedMessageList;
 
   const room = "chat_room";
   const handleSendButton = () => {
@@ -41,7 +43,7 @@ export const ChatInputField = () => {
     setMessageStat("");
   };
   const appendRecievedMessageList = (messageObj) => {
-    setReceivedMessageList([...receivedMessageList, messageObj]);
+    setReceivedMessageList([...receivedMessageListRef.current, messageObj]);
   };
   const connectChatDb = () => {
     // 過去のメッセージ取得
