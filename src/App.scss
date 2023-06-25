@@ -1,5 +1,9 @@
 .App {
   text-align: left;
+  input,
+  textarea {
+    display: block;
+  }
 }
 
 .App-logo {

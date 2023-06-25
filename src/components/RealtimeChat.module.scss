@@ -1,8 +1,12 @@
 .realtime-chat {
   &--form {
+    display: flex;
+    align-items: end;
     &__name {
     }
     &__message {
+    }
+    &__send-button {
     }
   }
   &--display {

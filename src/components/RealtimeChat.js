@@ -61,24 +61,28 @@ export const ChatInputField = () => {
   useEffect(connectChatDb, []);
   return (
     <div className={`${styles["realtime-chat"]}`}>
-      <div className={`${styles["realtime-chat--form__name"]}`}>
-        <input
-          type="text"
-          id="name"
-          value={nameStat}
-          onChange={(e) => setNameStat(e.currentTarget.value)}
-        />
-      </div>
-      <div className={`${styles["realtime-chat--form__message"]}`}>
-        <textarea
-          id="message"
-          row="10"
-          value={messageStat}
-          onChange={(e) => setMessageStat(e.currentTarget.value)}
-        ></textarea>
-        <button id="send" onClick={handleSendButton}>
-          send
-        </button>
+      <div className={`${styles["realtime-chat--form"]}`}>
+        <div className={`${styles["realtime-chat--form__name"]}`}>
+          <input
+            type="text"
+            id="name"
+            value={nameStat}
+            onChange={(e) => setNameStat(e.currentTarget.value)}
+          />
+        </div>
+        <div className={`${styles["realtime-chat--form__message"]}`}>
+          <textarea
+            id="message"
+            row="10"
+            value={messageStat}
+            onChange={(e) => setMessageStat(e.currentTarget.value)}
+          ></textarea>
+        </div>
+        <div className={`${styles["realtime-chat--form__send-button"]}`}>
+          <button id="send" onClick={handleSendButton}>
+            send
+          </button>
+        </div>
       </div>
       <div id="output" className={`${styles["realtime-chat--display"]}`}>
         {receivedMessageList.map((rm, idx) => {
