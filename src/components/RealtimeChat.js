@@ -45,15 +45,12 @@ export const ChatInputField = () => {
       const v = data.val();
       const messageList = Object.keys(v).map((m) => v[m]);
       setReceivedMessageList(messageList);
-      // setReceivedMessageList({ type: "push", messageList: messageList });
     });
 
     // メッセージ送信時のリスナ登録
     onChildAdded(ref(database, room), (data) => {
       const v = data.val();
       const k = data.key;
-      // setReceivedMessageList(receivedMessageList);
-      // setReceivedMessageList({ type: "push", messageList: [v] });
       appendRecievedMessageList(v);
     });
   };
