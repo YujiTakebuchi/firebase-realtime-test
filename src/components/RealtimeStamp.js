@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, push, ref } from "firebase/database";
 import styles from "./RealtimeStamp.module.scss";
+import { useRef } from "react";
 
 const env = process.env;
 
@@ -15,9 +16,20 @@ export const StampScreen = () => {
 };
 
 export const StampButton = () => {
+  const firebaseRefKeyRef = useRef(null);
+  const dbKey = "simple-stamp";
+  const handleSendButton = () => {
+    const pushObj = push(ref(database, dbKey), {
+      stamp_id: "1",
+    });
+    firebaseRefKeyRef.current = pushObj.key;
+  };
+
   return (
     <div className={`${styles["stamp-button"]}`}>
-      <button id="stamp-button">🚀</button>
+      <button id="stamp-button" onClick={handleSendButton}>
+        🚀
+      </button>
     </div>
   );
 };
