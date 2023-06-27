@@ -1,0 +1,33 @@
+.realtime-chat {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &--display {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    &__chat {
+      display: flex;
+      column-gap: 15px;
+      &__name {
+        flex: 0 0 200px;
+      }
+      &__message {
+        flex: 1 1 auto;
+      }
+    }
+  }
+  &--form {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    &__name {
+    }
+    &__message {
+    }
+    &__send-button {
+    }
+  }
+}

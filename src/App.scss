@@ -1,5 +1,13 @@
 .App {
-  text-align: center;
+  min-height: 100vh;
+  text-align: left;
+  main {
+    height: 100%;
+  }
+  input,
+  textarea {
+    display: block;
+  }
 }
 
 .App-logo {
