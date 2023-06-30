@@ -36,7 +36,9 @@ export const StampScreen = () => {
     onChildAdded(ref(database, dbKey), (data) => {
       const v = data.val();
       const k = data.key;
-      if (!isFirstLoad.current) appendStampEle(v);
+      if (!isFirstLoad.current) {
+        appendStampEle(v);
+      }
     });
 
     return () => {
