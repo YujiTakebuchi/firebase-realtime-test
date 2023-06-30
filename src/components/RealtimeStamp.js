@@ -18,6 +18,7 @@ const stampMap = {
 };
 
 export const StampScreen = () => {
+  const isFirstLoad = useRef(true);
   const stampScreenRef = useRef(null);
 
   const dbKey = "simple-stamp";
@@ -35,8 +36,12 @@ export const StampScreen = () => {
     onChildAdded(ref(database, dbKey), (data) => {
       const v = data.val();
       const k = data.key;
-      appendStampEle(v);
+      if (!isFirstLoad.current) appendStampEle(v);
     });
+
+    return () => {
+      isFirstLoad.current = false;
+    };
   };
 
   useEffect(connectChatDb, []);
