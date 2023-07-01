@@ -1,4 +1,3 @@
-import { createRoot } from "react-dom/client";
 import { initializeApp } from "firebase/app";
 import { getDatabase, onChildAdded, push, ref } from "firebase/database";
 import styles from "./RealtimeStamp.module.scss";
