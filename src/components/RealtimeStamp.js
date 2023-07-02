@@ -27,8 +27,7 @@ export const StampScreen = () => {
       const stampEmoji = stampMap[stampId];
       const stampEle = document.createElement("span");
       stampEle.textContent = stampEmoji;
-      stampEle.className = stampId;
-      stampEle.setAttribute("id", eleId);
+      stampEle.className = `${stampId} ${eleId}`;
       stampScreenRef.current.appendChild(stampEle);
     };
 
