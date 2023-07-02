@@ -22,7 +22,7 @@ export const StampScreen = () => {
   const dbKey = "simple-stamp";
   const connectChatDb = () => {
     const appendStampEle = (stamp) => {
-      const eleId = Date.now().toString();
+      const eleId = `id-${Date.now().toString()}`;
       const stampId = stamp["stamp_id"];
       const stampEmoji = stampMap[stampId];
       const stampEle = document.createElement("span");
