@@ -16,18 +16,24 @@ const stampMap = {
   stamp_02: "☄️",
 };
 
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
+};
+
 export const StampScreen = () => {
   const stampScreenRef = useRef(null);
 
   const dbKey = "simple-stamp";
   const connectChatDb = () => {
     const appendStampEle = (stamp) => {
+      const randomNum = getRandomInt(3);
+      const randomSize = `size-${randomNum}`;
       const eleId = `id-${Date.now().toString()}`;
       const stampId = stamp["stamp_id"];
       const stampEmoji = stampMap[stampId];
       const stampEle = document.createElement("span");
       stampEle.textContent = stampEmoji;
-      stampEle.className = `${stampId} ${eleId}`;
+      stampEle.className = `${stampId} ${eleId} ${styles[randomSize]}`;
       stampScreenRef.current.appendChild(stampEle);
     };
 
