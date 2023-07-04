@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, onChildAdded, push, ref } from "firebase/database";
 import styles from "./RealtimeStamp.module.scss";
 import { useEffect, useRef } from "react";
+import { sleep } from "../features/util";
 
 const env = process.env;
 
@@ -38,6 +39,9 @@ export const StampScreen = () => {
       stampEle.className = `${stampId} ${eleId} ${styles["stamp"]} ${styles[randomSize]}`;
       stampEle.style = `left: ${randomPosXNum}%; top: ${randomPosYNum}%`;
       stampScreenRef.current.appendChild(stampEle);
+      sleep(3000).then(() => {
+        stampEle.remove();
+      });
     };
 
     // スタンプ送信時のリスナ登録
