@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, onChildAdded, push, ref } from "firebase/database";
-import styles from "./RealtimeStamp.module.scss";
 import { useEffect, useRef } from "react";
-import { sleep } from "../features/util";
+import { gsap } from "gsap";
+import styles from "./RealtimeStamp.module.scss";
 
 const env = process.env;
 
@@ -36,12 +36,26 @@ export const StampScreen = () => {
       const stampEmoji = stampMap[stampId];
       const stampEle = document.createElement("span");
       stampEle.textContent = stampEmoji;
-      stampEle.className = `${stampId} ${eleId} ${styles["stamp"]} ${styles[randomSize]}`;
+      stampEle.className = `${styles[stampId]} ${eleId} ${styles["stamp"]} ${styles[randomSize]}`;
       stampEle.style = `left: ${randomPosXNum}%; top: ${randomPosYNum}%`;
       stampScreenRef.current.appendChild(stampEle);
-      sleep(3000).then(() => {
-        stampEle.remove();
-      });
+      gsap.fromTo(
+        stampEle,
+        {
+          xPercent: 0,
+          yPercent: 100,
+          opacity: 1,
+        },
+        {
+          xPercent: 100,
+          yPercent: 0,
+          opacity: 0,
+          duration: 3,
+          onComplete: () => {
+            stampEle.remove();
+          },
+        }
+      );
     };
 
     // スタンプ送信時のリスナ登録
