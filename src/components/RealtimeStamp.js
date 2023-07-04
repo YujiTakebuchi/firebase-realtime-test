@@ -26,14 +26,17 @@ export const StampScreen = () => {
   const dbKey = "simple-stamp";
   const connectChatDb = () => {
     const appendStampEle = (stamp) => {
-      const randomNum = getRandomInt(3);
-      const randomSize = `size-${randomNum}`;
+      const randomSizeNum = getRandomInt(3);
+      const randomSize = `size-${randomSizeNum}`;
+      const randomPosXNum = getRandomInt(100);
+      const randomPosYNum = getRandomInt(100);
       const eleId = `id-${Date.now().toString()}`;
       const stampId = stamp["stamp_id"];
       const stampEmoji = stampMap[stampId];
       const stampEle = document.createElement("span");
       stampEle.textContent = stampEmoji;
-      stampEle.className = `${stampId} ${eleId} ${styles[randomSize]}`;
+      stampEle.className = `${stampId} ${eleId} ${styles["stamp"]} ${styles[randomSize]}`;
+      stampEle.style = `left: ${randomPosXNum}%; top: ${randomPosYNum}%`;
       stampScreenRef.current.appendChild(stampEle);
     };
 

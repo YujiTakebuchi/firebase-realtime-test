@@ -1,5 +1,11 @@
 .stamp-screen {
   position: relative;
+  min-height: 100vh;
+  .stamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
   .size-0 {
     font-size: 16px;
   }
