@@ -1,13 +1,13 @@
 import "./App.scss";
-import RealtimeChat from "./components/RealtimeChat";
-import RealtimeEventProgress from "./components/RealtimeEventProgress";
+import Demo from "./components/Demo";
 
 function App() {
   return (
     <div className="App">
       <main>
+        <Demo />
         {/* <RealtimeChat /> */}
-        <RealtimeEventProgress />
+        {/* <RealtimeEventProgress /> */}
       </main>
     </div>
   );
