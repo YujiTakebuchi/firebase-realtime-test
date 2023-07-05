@@ -15,7 +15,7 @@ const DemoSwtich = ({ onClick }) => {
 };
 
 const Demo = () => {
-  const [demo, setDemo] = useState(<RealtimeChat />);
+  const [demo, setDemo] = useState(<RealtimeEventProgress />);
   return (
     <div className={styles["demo"]}>
       <div className={styles["demo-switch"]}>
