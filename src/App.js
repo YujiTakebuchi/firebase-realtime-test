@@ -6,8 +6,6 @@ function App() {
     <div className="App">
       <main>
         <Demo />
-        {/* <RealtimeChat /> */}
-        {/* <RealtimeEventProgress /> */}
       </main>
     </div>
   );
