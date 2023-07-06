@@ -1,0 +1,23 @@
+.stamp-screen {
+  position: relative;
+  min-height: 100vh;
+  .stamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  .stamp_01 {
+  }
+  .size-0 {
+    font-size: 16px;
+  }
+  .size-1 {
+    font-size: 32px;
+  }
+  .size-2 {
+    font-size: 64px;
+  }
+}
+.stamp-button {
+  position: relative;
+}

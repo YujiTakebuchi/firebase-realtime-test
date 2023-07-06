@@ -2,6 +2,7 @@ import { useState } from "react";
 import RealtimeChat from "./RealtimeChat";
 import styles from "./Demo.module.scss";
 import RealtimeEventProgress from "./RealtimeEventProgress";
+import RealtimeStamp from "./RealtimeStamp";
 
 const DemoSwtich = ({ onClick }) => {
   return (
@@ -9,7 +10,8 @@ const DemoSwtich = ({ onClick }) => {
       <button onClick={() => onClick(<RealtimeEventProgress />)}>
         イベント進行demo
       </button>
-      <button onClick={() => onClick(<RealtimeChat />)}>チャットdemo</button>
+      <button onClick={() => onClick(<RealtimeStamp />)}>スタンプdemo</button>
+      {/* <button onClick={() => onClick(<RealtimeChat />)}>チャットdemo</button> */}
     </div>
   );
 };
