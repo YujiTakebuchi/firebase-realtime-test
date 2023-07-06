@@ -1,13 +1,11 @@
 import "./App.scss";
-import RealtimeChat from "./components/RealtimeChat";
-import RealtimeStamp from "./components/RealtimeStamp";
+import Demo from "./components/Demo";
 
 function App() {
   return (
     <div className="App">
       <main>
-        {/* <RealtimeChat /> */}
-        <RealtimeStamp />
+        <Demo />
       </main>
     </div>
   );
