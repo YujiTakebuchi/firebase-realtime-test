@@ -75,17 +75,30 @@ export const StampScreen = () => {
 export const StampButton = () => {
   const firebaseRefKeyRef = useRef(null);
   const dbKey = "simple-stamp";
-  const handleSendButton = () => {
+  const handleSendButton = (stampId) => {
     const pushObj = push(ref(database, dbKey), {
-      stamp_id: "stamp_01",
+      stamp_id: stampId,
     });
     firebaseRefKeyRef.current = pushObj.key;
   };
 
   return (
     <div className={`${styles["stamp-button"]}`}>
-      <button id="stamp-button" onClick={handleSendButton}>
+      <button
+        id="stamp-button"
+        onClick={() => {
+          handleSendButton("stamp_01");
+        }}
+      >
         🚀
+      </button>
+      <button
+        id="stamp-button"
+        onClick={() => {
+          handleSendButton("stamp_02");
+        }}
+      >
+        ☄️
       </button>
     </div>
   );
