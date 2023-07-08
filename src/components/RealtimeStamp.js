@@ -17,6 +17,35 @@ const stampMap = {
   stamp_02: "☄️",
 };
 
+const stampGsapOptionMap = {
+  stamp_01: {
+    from: {
+      xPercent: 0,
+      yPercent: 100,
+      opacity: 1,
+    },
+    to: {
+      xPercent: 100,
+      yPercent: 0,
+      opacity: 0,
+      duration: 3,
+    },
+  },
+  stamp_02: {
+    from: {
+      xPercent: 100,
+      yPercent: 100,
+      opacity: 1,
+    },
+    to: {
+      xPercent: 0,
+      yPercent: 0,
+      opacity: 0,
+      duration: 3,
+    },
+  },
+};
+
 const getRandomInt = (max) => {
   return Math.floor(Math.random() * max);
 };
@@ -42,15 +71,10 @@ export const StampScreen = () => {
       gsap.fromTo(
         stampEle,
         {
-          xPercent: 0,
-          yPercent: 100,
-          opacity: 1,
+          ...stampGsapOptionMap[stampId]["from"],
         },
         {
-          xPercent: 100,
-          yPercent: 0,
-          opacity: 0,
-          duration: 3,
+          ...stampGsapOptionMap[stampId]["to"],
           onComplete: () => {
             stampEle.remove();
           },
